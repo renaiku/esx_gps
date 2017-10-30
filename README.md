@@ -2,7 +2,7 @@
 FXServer ESX GPS
 
 Original script:
-https://github.com/KandaSoranyan/esx_gps
+https://github.com/Sylundef/esx_gps
 
 [REQUIREMENTS]
 
