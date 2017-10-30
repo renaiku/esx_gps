@@ -5,13 +5,13 @@ TriggerEvent('esx:getSharedObject', function(obj)
 end)
 
 AddEventHandler('esx:onAddInventoryItem', function(source, item, count)
-	if item == 'gps' then
+	if item.name == 'gps' then
 		TriggerClientEvent('esx_gps:addGPS', source)
 	end
 end)
 
 AddEventHandler('esx:onRemoveInventoryItem', function(source, item, count)
-	if item == 'gps' and count < 1 then
+	if item.name == 'gps' and item.count < 1 then
 		TriggerClientEvent('esx_gps:removeGPS', source)
 	end
 end)
