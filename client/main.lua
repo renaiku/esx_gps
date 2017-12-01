@@ -1,4 +1,6 @@
 ESX = nil
+local showGps = false
+local keepHealthBar = true
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -25,10 +27,29 @@ end)
 
 RegisterNetEvent('esx_gps:addGPS')
 AddEventHandler('esx_gps:addGPS', function()
-	DisplayRadar(true)
+	if keepHealthBar == true then
+		showGps = true
+	else
+		DisplayRadar(true)
+	end
 end)
 
 RegisterNetEvent('esx_gps:removeGPS')
 AddEventHandler('esx_gps:removeGPS', function()
-	DisplayRadar(false)
+	if keepHealthBar == true then
+		showGps = false
+	else
+		DisplayRadar(false)
+	end
+end)
+
+Citizen.CreateThread(function()
+	while keepHealthBar do
+		Wait(0)
+            if showGps == false then
+            	DrawRect(0.085, 0.890, 0.14, 0.160, 0, 0, 0, 255);
+            	SetRadarBigmapEnabled( false, false )
+            end
+
+        end
 end)
